@@ -16,7 +16,7 @@ async function clickButton()
     {
         button[0].click();
         console.log("Button clicked")
-        await sleep(6000)
+        await sleep(6000);
     }
     setTimeout(function(){ clickButton();}, 500);
 }
