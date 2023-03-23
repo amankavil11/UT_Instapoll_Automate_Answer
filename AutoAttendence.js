@@ -6,9 +6,12 @@ Instructions:
 	4. If you see the console print ("Find Button") then the script is working
 This script should automatically select a poll answer whenever there is a new one popping up
 */
-const sleep = ms => new Promise(r => setTimeout(r, ms));
+//const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function clickButton()
+Function.prototype.sleep = function(delay, ...args) {
+    setTimeout(() => this(...args), delay)
+}
+function clickButton()
 {
     let button = document.getElementsByClassName("btn btn-primary");
     console.log("Find Button");
@@ -16,7 +19,8 @@ async function clickButton()
     {
         button[0].click();
         console.log("Button clicked")
-        await sleep(6000);
+	console.log.sleep(6000, "Sleep...")
+        //await sleep(6000);
     }
     setTimeout(function(){ clickButton();}, 500);
 }
