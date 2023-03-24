@@ -6,6 +6,13 @@ Instructions:
 	4. If you see the console print ("Looking for incomplete polls...") then the script is working
 This script should invoke a weird BEEP noise whenever there is a new poll published
 */
+function contains(target, pattern){
+    var value = 0;
+    pattern.forEach(function(word){
+      value = value + target.includes(word);
+    });
+    return (value === 1)
+}
 function PollNotifer(){
 	let a=new AudioContext()
 	function beep(vol, freq, duration){
@@ -30,15 +37,15 @@ function PollNotifer(){
 			let columns = polls[i].getElementsByTagName("td");
 			if(columns.length >= 3)
 			{
-				if(!columns[2].innerHTML.includes("Completed"))
+				if(!contains(columns[2].innerHTML, ["Completed","Incomplete"]))
 				{
-					beep(1000,100,100);
+					beep(5000,100,100);
 				}
 			}
 		}
 		console.log("Looking for incomplete polls...");
 	}
-	setTimeout(function(){PollNotifer();},1000);
+	setTimeout(function(){PollNotifer();},300);
 }
 
 PollNotifer();
