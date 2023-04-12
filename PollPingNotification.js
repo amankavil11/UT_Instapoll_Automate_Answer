@@ -37,7 +37,7 @@ function PollNotifer(){
 			let columns = polls[i].getElementsByTagName("td");
 			if(columns.length >= 3)
 			{
-				if(!contains(columns[2].innerHTML, ["Completed","Incomplete"]))
+				if(!contains(columns[2].innerHTML, ["Completed"]))
 				{
 					beep(5000,100,100);
 				}
